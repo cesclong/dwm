@@ -52,9 +52,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "Tile",      tile },    /* first entry is default */
+	{ "Float",      NULL },    /* no layout function means floating behavior */
+	{ "SimpleWindow",      monocle },
 };
 
 /* key definitions */
@@ -73,6 +73,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *chromecmd[] = {"google-chrome-stable", NULL};
 static const char *dmenucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *powermenucmd[] = {'/home/cesc/prog/dwm/scripts/functions/dwm_power.sh', NULL}; /*power menu*/
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
@@ -81,7 +82,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY|ShiftMask,             XK_c, spawn,          {.v = chromecmd } },
+	{ MODKEY|ShiftMask,             XK_c,      spawn,          {.v = chromecmd } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = powermenucmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

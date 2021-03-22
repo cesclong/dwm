@@ -120,7 +120,8 @@ print_bat(){
 }
 
 print_date(){
-	date '+%Y-%m-%d %H:%M'
+	#date '+%Y-%m-%d %H:%M'
+	date '+%Y年-%m月-%d日 %H:%M'
 }
 
 show_record(){
@@ -150,6 +151,7 @@ export IDENTIFIER="unicode"
 #. "$DIR/dwmbar-functions/dwm_ccurse.sh"
 #. "$DIR/dwmbar-functions/dwm_date.sh"
 . "$DIR/functions/dwm_network.sh"
+. "$DIR/functions/dwm_keyboard.sh"
 
 get_bytes
 
@@ -162,7 +164,8 @@ vel_trans=$(get_velocity $transmitted_bytes $old_transmitted_bytes $now)
 
 #xsetroot -name " 💿 $(print_mem)M $(dwm_alsa)  $(print_bat)  $(print_date) "
 #xsetroot -name " 💿 $(print_mem)M $(print_bat)  $(print_date) "
-xsetroot -name " 💿 $(print_mem)M  $(dwm_network)   $(print_date) "
+#xsetroot -name " 💿 $(print_mem)M |   $(dwm_network) |  $(print_date) "
+xsetroot -name "   $(dwm_keyboard) 💿 $(print_mem)M |   $(dwm_network) |  $(print_date) "
 # xsetroot -name " 💿 $(print_mem)M $(dwm_alsa) $(dwm_weather)  $(print_bat)  $(print_date) "
 
 # Update old values to perform new calculations
