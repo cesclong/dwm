@@ -12,13 +12,13 @@ static const int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
-static const char *fonts[]          = { "Symbols Nerd Font:size=14" };
+static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
+static const char col_gray1[]       = "#282A36";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray3[]       = "#f8f8f2";
+static const char col_gray4[]       = "#f8f8f2";
+static const char col_cyan[]        = "#44475a";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
@@ -73,9 +73,10 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *chromecmd[] = {"google-chrome-stable", NULL};
 static const char *dmenucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *powermenucmd[] = {'/home/cesc/prog/dwm/scripts/functions/dwm_power.sh', NULL}; /*power menu*/
+static const char *powermenucmd[] = {"/home/cesc/prog/dwm/scripts/functions/dwm_power.sh", NULL}; /*power menu*/
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *filemanagercmd[] = {"pcmanfm", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -84,6 +85,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,             XK_c,      spawn,          {.v = chromecmd } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = powermenucmd } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = filemanagercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

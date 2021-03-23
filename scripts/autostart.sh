@@ -1,13 +1,13 @@
 #!/bin/bash
 
 /bin/bash ./dwm-status.sh &
-#/bin/bash ./dwm-wallpaper.sh &
+/bin/bash ./dwm-wallpaper.sh &
 
 picom -b &
 
 xcompmgr &
 
-variety &
+#variety &
 
 mate-power-manager &
 
