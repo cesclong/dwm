@@ -1,7 +1,5 @@
 #!/bin/bash
 
-/bin/bash ./dwm-status.sh &
-/bin/bash ./dwm-wallpaper.sh &
 
 picom -b &
 
@@ -18,3 +16,5 @@ fcitx5 &
 
 xrandr --output HDMI-2 --auto --output eDP-1 --off &
 
+/bin/bash ./dwm-status.sh &
+/bin/bash ./dwm-wallpaper.sh &
