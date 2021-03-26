@@ -10,7 +10,7 @@ static const unsigned int gappoh    = gap_for_window;       /* horiz outer gap b
 static const unsigned int gappov    = gap_for_window;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 0;        /* 0 means bottom bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const char *fonts[]          = { "monospace:size=12", "WenQuanYi Micro Hei:size=12" };
 static const char dmenufont[]       = "monospace:size=12";
@@ -50,12 +50,16 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "平铺",      tile },    /* first entry is default */
 	{ "浮动",      NULL },    /* no layout function means floating behavior */
 	{ "单窗体",      monocle },
 };
+
+#define LT_TILE 0
+#define LT_FLOAT 1
 
 /* key definitions */
 #define MODKEY Mod4Mask
@@ -89,15 +93,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_n,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_n,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_period, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[LT_TILE]} },
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[LT_FLOAT]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
